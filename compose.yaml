@@ -1,8 +1,8 @@
 name: c-compiler
 
 services:
-  c-compiler:
-    container_name: alpine
+  alpine:
+    container_name: c-compiler-alpine
     build:
       context: .
       dockerfile: Dockerfile
