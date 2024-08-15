@@ -1,0 +1,10 @@
+name: c-compiler
+
+services:
+  c-compiler:
+    container_name: alpine
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    stdin_open: true
