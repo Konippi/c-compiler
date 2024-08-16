@@ -8,3 +8,7 @@ services:
       dockerfile: Dockerfile
     tty: true
     stdin_open: true
+    environment:
+      - WHOAMI=c-compiler
+    volumes:
+      - ./src:/home/c-compiler/src

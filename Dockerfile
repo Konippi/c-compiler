@@ -1,9 +1,10 @@
-FROM alpine:3.20
+FROM ubuntu:latest
 
-RUN apk update && \
-    apk add --no-cache \
-    gcc \
-    make \
-    git \
-    binutils \
-    libc-dev \
+RUN apt update
+RUN apt install -y gcc make git binutils libc6-dev gdb sudo
+RUN adduser --disabled-password --gecos '' ${WHOAMI}
+RUN echo '${WHOAMI} ALL=(root) NOPASSWD:ALL' > /etc/sudoers.d/${WHOAMI}
+
+USER ${WHOAMI}
+
+WORKDIR /home/${WHOAMI}
