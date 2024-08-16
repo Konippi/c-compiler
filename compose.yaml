@@ -1,11 +1,13 @@
 name: c-compiler
 
 services:
-  alpine:
-    container_name: c-compiler-alpine
+  ubuntu:
+    container_name: c-compiler-ubuntu
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - WHOAMI=c-compiler
     tty: true
     stdin_open: true
     environment:
