@@ -5,7 +5,8 @@ The code is based on the online book [低レイヤを知りたい人のための
 
 ## Requirements
 
-- just only [Docker](https://www.docker.com/)
+- [Docker](https://www.docker.com/)
+- [Make](https://www.gnu.org/software/make/)
 
 ## Setup Environment
 
@@ -18,11 +19,5 @@ The code is based on the online book [低レイヤを知りたい人のための
 2. Enter the container.
 
     ```bash
-    $ docker exec -it c-compiler-ubuntu bash
+    $ make in
     ```
-
-    - if you can already use `make`, you can use the following command.
-
-        ```bash
-        $ make in
-        ```
