@@ -1,7 +1,7 @@
 # Learning C Compiler :gear:
 
 This repository is to learn how to implement a simple C compiler. <br>
-The inclueded code is based on the online book [低レイヤを知りたい人のためのCコンパイラ作成入門](https://www.sigbus.info/compilerbook) by [Rui Ueyama](https://github.com/rui314)-san.
+The code is based on the online book [低レイヤを知りたい人のためのCコンパイラ作成入門](https://www.sigbus.info/compilerbook) by [Rui Ueyama](https://github.com/rui314)-san.
 
 ## Requirements
 
