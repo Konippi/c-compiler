@@ -7,10 +7,10 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - WHOAMI=c-compiler
+        - WHOAMI=user
     tty: true
     stdin_open: true
     environment:
-      - WHOAMI=c-compiler
+      - WHOAMI=user
     volumes:
-      - ./src:/home/c-compiler/src
+      - ./src:/home/user/src
