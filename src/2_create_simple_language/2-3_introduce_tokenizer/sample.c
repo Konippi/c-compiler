@@ -20,7 +20,7 @@ struct Token {
   char *str;      // Token string
 };
 
-Token *token;
+Token *token; // Current token
 
 /**
  * Report an error and exit.
@@ -36,6 +36,13 @@ void error(char *fmt, ...) {
   exit(1);
 }
 
+/**
+ * Check if the current token is op.
+ *
+ * @param op Operator
+ *
+ * @return Is the current token op
+ */
 bool consume(char op) {
   if (token->kind != TK_RESERVED || token->str[0] != op)
     return false;
@@ -43,12 +50,22 @@ bool consume(char op) {
   return true;
 }
 
+/**
+ * Ensure that the current token is op.
+ *
+ * @param op Operator
+ */
 void expect(char op) {
   if (token->kind != TK_RESERVED || token->str[0] != op)
     error("Not '%c'", op);
   token = token->next;
 }
 
+/**
+ * Get a number and move to the next token.
+ *
+ * @return Number
+ */
 int expect_number() {
   if (token->kind != TK_NUM)
     error("Not a number");
@@ -57,10 +74,24 @@ int expect_number() {
   return val;
 }
 
+/**
+ * Check if the current token is EOF.
+ *
+ * @return Is the current token EOF
+ */
 bool at_eof() {
   return token->kind == TK_EOF;
 }
 
+/**
+ * Create a new token.
+ *
+ * @param kind Token kind
+ * @param cur Current token
+ * @param str Token string
+ *
+ * @return New token
+ */
 Token *new_token(TokenKind kind, Token *cur, char *str) {
   Token *tok = calloc(1, sizeof(Token));
   tok->kind = kind;
@@ -69,12 +100,20 @@ Token *new_token(TokenKind kind, Token *cur, char *str) {
   return tok;
 }
 
+/**
+ * Tokenize input string.
+ *
+ * @param p Input string
+ *
+ * @return Tokenized tokens
+ */
 Token *tokenize(char *p) {
   Token head;
   head.next = NULL;
   Token *cur = &head;
 
   while (*p) {
+    // Skip whitespace characters
     if (isspace(*p)) {
       p++;
       continue;
