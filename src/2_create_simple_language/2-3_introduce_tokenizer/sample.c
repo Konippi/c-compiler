@@ -6,21 +6,21 @@
 #include <string.h>
 
 typedef enum {
-  TK_RESERVED, // Symbol
-  TK_NUM,      // Integer token
-  TK_EOF,      // End of input token
+  TK_RESERVED,  // Symbol
+  TK_NUM,       // Integer token
+  TK_EOF,       // End of input token
 } TokenKind;
 
 typedef struct Token Token;
 
 struct Token {
-  TokenKind kind; // Token kind
-  Token *next;    // Next token
-  int val;        // If kind is TK_NUM, its value
-  char *str;      // Token string
+  TokenKind kind;  // Token kind
+  Token *next;     // Next token
+  int val;         // If kind is TK_NUM, its value
+  char *str;       // Token string
 };
 
-Token *token; // Current token
+Token *token;  // Current token
 
 /**
  * Report an error and exit.
@@ -44,8 +44,7 @@ void error(char *fmt, ...) {
  * @return Is the current token op
  */
 bool consume(char op) {
-  if (token->kind != TK_RESERVED || token->str[0] != op)
-    return false;
+  if (token->kind != TK_RESERVED || token->str[0] != op) return false;
   token = token->next;
   return true;
 }
@@ -56,8 +55,7 @@ bool consume(char op) {
  * @param op Operator
  */
 void expect(char op) {
-  if (token->kind != TK_RESERVED || token->str[0] != op)
-    error("Not '%c'", op);
+  if (token->kind != TK_RESERVED || token->str[0] != op) error("Not '%c'", op);
   token = token->next;
 }
 
@@ -67,10 +65,9 @@ void expect(char op) {
  * @return Number
  */
 int expect_number() {
-  if (token->kind != TK_NUM)
-    error("Not a number");
+  if (token->kind != TK_NUM) error("Not a number");
   int val = token->val;
-  token = token->next;
+  token   = token->next;
   return val;
 }
 
@@ -94,9 +91,9 @@ bool at_eof() {
  */
 Token *new_token(TokenKind kind, Token *cur, char *str) {
   Token *tok = calloc(1, sizeof(Token));
-  tok->kind = kind;
-  tok->str = str;
-  cur->next = tok;
+  tok->kind  = kind;
+  tok->str   = str;
+  cur->next  = tok;
   return tok;
 }
 
@@ -109,7 +106,7 @@ Token *new_token(TokenKind kind, Token *cur, char *str) {
  */
 Token *tokenize(char *p) {
   Token head;
-  head.next = NULL;
+  head.next  = NULL;
   Token *cur = &head;
 
   while (*p) {
@@ -125,7 +122,7 @@ Token *tokenize(char *p) {
     }
 
     if (isdigit(*p)) {
-      cur = new_token(TK_NUM, cur, p);
+      cur      = new_token(TK_NUM, cur, p);
       cur->val = strtol(p, &p, 10);
       continue;
     }
@@ -136,7 +133,6 @@ Token *tokenize(char *p) {
   new_token(TK_EOF, cur, p);
   return head.next;
 }
-
 
 int main(int argc, char **argv) {
   if (argc != 2) {

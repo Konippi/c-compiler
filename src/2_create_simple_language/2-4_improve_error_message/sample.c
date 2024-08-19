@@ -6,18 +6,18 @@
 #include <string.h>
 
 typedef enum {
-  TK_RESERVED, // Symbol
-  TK_NUM,      // Integer token
-  TK_EOF,      // End of input token
+  TK_RESERVED,  // Symbol
+  TK_NUM,       // Integer token
+  TK_EOF,       // End of input token
 } TokenKind;
 
 typedef struct Token Token;
 
 struct Token {
-  TokenKind kind; // Token kind
-  Token *next;    // Next token
-  int val;        // If kind is TK_NUM, its value
-  char *str;      // Token string
+  TokenKind kind;  // Token kind
+  Token *next;     // Next token
+  int val;         // If kind is TK_NUM, its value
+  char *str;       // Token string
 };
 
 // Input program
@@ -68,8 +68,7 @@ void error_at(char *loc, char *fmt, ...) {
  * @return Is the current token op
  */
 bool consume(char op) {
-  if (token->kind != TK_RESERVED || token->str[0] != op)
-    return false;
+  if (token->kind != TK_RESERVED || token->str[0] != op) return false;
   token = token->next;
   return true;
 }
@@ -91,10 +90,9 @@ void expect(char op) {
  * @return Number
  */
 int expect_number() {
-  if (token->kind != TK_NUM)
-    error_at(token->str, "expected a number");
+  if (token->kind != TK_NUM) error_at(token->str, "expected a number");
   int val = token->val;
-  token = token->next;
+  token   = token->next;
   return val;
 }
 
@@ -118,9 +116,9 @@ bool at_eof() {
  */
 Token *new_token(TokenKind kind, Token *cur, char *str) {
   Token *tok = calloc(1, sizeof(Token));
-  tok->kind = kind;
-  tok->str = str;
-  cur->next = tok;
+  tok->kind  = kind;
+  tok->str   = str;
+  cur->next  = tok;
   return tok;
 }
 
@@ -134,7 +132,7 @@ Token *new_token(TokenKind kind, Token *cur, char *str) {
 Token *tokenize() {
   char *p = user_input;
   Token head;
-  head.next = NULL;
+  head.next  = NULL;
   Token *cur = &head;
 
   while (*p) {
@@ -150,7 +148,7 @@ Token *tokenize() {
     }
 
     if (isdigit(*p)) {
-      cur = new_token(TK_NUM, cur, p);
+      cur      = new_token(TK_NUM, cur, p);
       cur->val = strtol(p, &p, 10);
       continue;
     }
@@ -169,7 +167,7 @@ int main(int argc, char **argv) {
   }
 
   user_input = argv[1];
-  token = tokenize();
+  token      = tokenize();
 
   printf(".intel_syntax noprefix\n");
   printf(".global main\n");

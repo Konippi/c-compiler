@@ -1,7 +1,7 @@
 int plus(int x, int y) {
-    return x + y;
+  return x + y;
 }
 
 int main() {
-    return plus(1, 2);
+  return plus(1, 2);
 }

@@ -1,0 +1,14 @@
+Language: Cpp
+BasedOnStyle: Google
+
+AccessModifierOffset: -2
+AlignConsecutiveAssignments: true
+AlignTrailingComments: true
+AllowShortBlocksOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+ColumnLimit: 80
+IndentWidth: 2
+PointerAlignment: Right
+TabWidth: 2
+UseTab: Never
