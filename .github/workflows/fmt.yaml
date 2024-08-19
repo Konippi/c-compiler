@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: clang-format
+      - name: Run Format Check
+        shell: bash
         run: |
           sh fmt.sh --check
