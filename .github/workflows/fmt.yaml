@@ -13,6 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Format Check
-        shell: bash
         run: |
           sh fmt.sh --check

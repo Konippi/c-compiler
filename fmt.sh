@@ -1,9 +1,9 @@
-#!/bin/bash -eu
+#!/bin/sh -eu
 
 CHECK_MODE=false
 
 if [ "$#" -gt 0 ]; then
-  if [ "$1" == "--check" ]; then
+  if [ "$1" = "--check" ]; then
     CHECK_MODE=true
   else
     echo "Error: Invalid argument '$1'. Only '--check' is supported."
