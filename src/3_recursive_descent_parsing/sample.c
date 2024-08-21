@@ -191,7 +191,7 @@ Node *new_node(NodeKind kind) {
 }
 
 /**
- * Create a new binary node.
+ * Create a new binary.
  *
  * @param kind Node kind
  * @param lhs Left-hand side
@@ -201,14 +201,13 @@ Node *new_node(NodeKind kind) {
  */
 Node *new_binary(NodeKind kind, Node *lhs, Node *rhs) {
   Node *node = new_node(kind);
-  node->kind = kind;
   node->lhs  = lhs;
   node->rhs  = rhs;
   return node;
 }
 
 /**
- * Create a new node with a number.
+ * Create a new number.
  *
  * @param val Value
  *
