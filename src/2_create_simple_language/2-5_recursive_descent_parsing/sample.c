@@ -318,7 +318,7 @@ void gen(Node *node) {
 
 int main(int argc, char **argv) {
   if (argc != 2) {
-    error("%s: ot correct number of arguments", argv[0]);
+    error("%s: Not correct number of arguments", argv[0]);
   }
 
   user_input = argv[1];
