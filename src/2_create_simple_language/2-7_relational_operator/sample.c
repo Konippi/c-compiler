@@ -409,13 +409,13 @@ void gen(Node *node) {
       printf("  imul rdi\n");
       break;
     case NODE_DIV:
-      printf("  cqo\n");  // Convert RAX(64bit) to RDX:RAX(128bit)
-      printf("  idiv rdi\n");
+      printf("  cqo\n");       // Convert RAX(64bit) to RDX:RAX(128bit)
+      printf("  idiv rdi\n");  // RAX=RAX/RDI, RDX=RAX%RDI
       break;
     case NODE_EQ:
-      printf("  cmp rax, rdi\n");
-      printf("  sete al\n");
-      printf("  movzb rax, al\n");
+      printf("  cmp rax, rdi\n");  // Comparison result is set to FLAGS register
+      printf("  sete al\n");       // Set AL(lower 8 bits of RAX) to 1 if equal
+      printf("  movzb rax, al\n");  // Zero clear upper 56 bits of RAX
       break;
     case NODE_NE:
       printf("  cmp rax, rdi\n");
