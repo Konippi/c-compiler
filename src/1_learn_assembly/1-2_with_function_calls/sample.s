@@ -1,5 +1,5 @@
 .intel_syntax noprefix
-.globl plus, main
+.global plus, main
 
 plus:
     add rsi, rdi # first argument is stored in RDI, second argument is stored in RSI
