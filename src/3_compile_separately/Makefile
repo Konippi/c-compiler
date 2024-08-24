@@ -10,6 +10,7 @@ $(OBJS): c_compiler.h
 
 test: $(TARGET)
 	./test.sh
+	$(MAKE) clean
 
 clean:
 	rm -f $(TARGET) *.o *~ tmp*
