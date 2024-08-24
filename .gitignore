@@ -1,0 +1,5 @@
+# OS
+.DS_Store
+
+# Generated files by the compiler
+*.o
