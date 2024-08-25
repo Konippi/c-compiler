@@ -15,14 +15,11 @@ int main(int argc, char **argv) {
   token      = tokenize();
   Node *node = expr();
 
-  printf(".intel_syntax noprefix\n");
-  printf(".global main\n");
-  printf("main:\n");
-
-  // Generate code using the recursive descent parser
+  // Generate code
+  gen_header();
   gen(node);
 
   pop("rax");
-  printf("  ret\n");
+  ret();
   return 0;
 }

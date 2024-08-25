@@ -80,4 +80,6 @@ Node *expr(void);
 
 void pop(char *arg);
 void push(void);
+void ret(void);
+void gen_header(void);
 void gen(Node *node);

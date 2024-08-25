@@ -20,6 +20,22 @@ void push(void) {
 }
 
 /**
+ * Return from the function.
+ */
+void ret(void) {
+  printf("  ret\n");
+}
+
+/**
+ * Generate assembly code header.
+ */
+void gen_header(void) {
+  printf(".intel_syntax noprefix\n");
+  printf(".global main\n");
+  printf("main:\n");
+}
+
+/**
  * Generate assembly code.
  *
  * @param node Parsed node
